@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.out"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "/usr/bin"
@@ -21,12 +21,35 @@
         },
         {
             "type": "shell",
-            "label": "g++ build active file",
+            "label": "g++ build and run",
             "command": "/usr/bin/g++",
             "args": [
+                "-g",
+                "-std=c++14",
+                "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-                "${file}"
+                "&&",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "g++ build",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-std=c++14",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "/usr/bin"
